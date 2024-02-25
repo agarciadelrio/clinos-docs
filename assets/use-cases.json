@@ -371,7 +371,7 @@
         }
       ]
     },
-    {"name": "Gerente crea/edita Producto",
+    {"name": "Gerente crea/edita Producto / Servicio",
       "actor": "home-solid:Gerente:purple-500",
       "steps": [
         {

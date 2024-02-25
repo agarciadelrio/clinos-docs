@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClinOS</title>
+  <link rel="icon" href="/assets/logo.svg">
   <link rel="stylesheet" href="/assets/tailwind.min.css">
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/unocss-theme.js"></script>
@@ -11,7 +12,10 @@
   <script src="/assets/app.js" type="module"></script>
 </head>
 <body class="bg-neutral-300" x-data="App" x-cloak un-cloak>
-  <h1 class="px-1 py-2 text-center text-lg bg-neutral-800 text-white">ClinOS - Casos de uso</h1>
+  <header class="flex flex-row items-center justify-start gap-3 px-1 py-1 text-center text-lg bg-neutral-800 text-white">
+    <img src="assets/logo.svg" class="w-10 h-10">
+    <h1>ClinOS - Casos de uso</h1>
+  </header>
   <nav class="grid grid-cols-3 sm:flex sm:flex-row items-center justify-center">
     <template x-for="item in menus.caseFilters" :key="item[0]">
       <button class="px-2 flex flex-row items-center gap-1" :class="{'bg-neutral-800 text-white': currentCaseFilter==item[0]}"
