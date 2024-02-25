@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClinOS</title>
+  <link rel="stylesheet" href="/assets/tailwind.min.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/unocss-theme.js"></script>
+  <script src="/assets/unocss.js"></script>
+  <script src="/assets/app.js" type="module"></script>
+</head>
+<body class="bg-neutral-300" x-data="App" x-cloak un-cloak>
+  <h1 class="px-1 py-2 text-center text-lg bg-neutral-800 text-white">ClinOS - Casos de uso</h1>
+  <nav class="grid grid-cols-3 sm:flex sm:flex-row items-center justify-center">
+    <template x-for="item in menus.caseFilters" :key="item[0]">
+      <button class="px-2 flex flex-row items-center gap-1" :class="{'bg-neutral-800 text-white': currentCaseFilter==item[0]}"
+      @click="setCurrentCaseFilter(item[0])">
+        <span x-text="item[1]">ITEM</span>
+        <small class="flex items-center justify-center rounded-full bg-red w-4 text-center text-[10px] m-t--1" x-text="counters[item[0]]">0</small>
+      </button>
+    </template>
+  </nav>
+  <p class="text-xs text-center pt-1">CRUD: Create, Read, Update and Delete</p>
+  <div class="container px-3 sm:px-0 mx-auto flex flex-col gap-5 py-10" x-show="showing" x-transition.opacity>
+    <template x-for="(cas,ind) in cases.filter(caseFilters[currentCaseFilter])" :key="cas.name">
+      <div class="rounded-lg shadow shadow-neutral border border-neutral-500 bg-neutral-200">
+        <div class="rounded-t-lg text-lg font-bold text-left px-2 w-full font-medium bg-neutral-400">
+          <span x-text="ind+1"></span> -
+          <span x-text="cas.name">name</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-5 sm:gap-0 items-center px-2 pt-5 pb-3">
+          <div>
+            <div x-data="Actor(cas.actor, 'w-10')"></div>
+          </div>
+          <template x-for="(step,ind2) in cas.steps" :key="ind2">
+            <div class="flex-1 flex flex-row items-center justify-between gap-0">
+              <template x-if="step.actor && ind2>0">
+                <div class="h-6 w-6"><svg x-data="Icon('arrow-right','h-6 w-6')"></svg></div>
+              </template>
+              <template x-if="step.actor">
+                <div x-data="Actor(step.actor, 'w-10')"></div>
+              </template>
+              <div class="text-center w-full pl-5 pr-3 flex flex-col gap-3">
+                <span x-text="step.action"></span>
+                <div class="h-4">
+                  <svg class="w-full h-full text-blue" style="overflow:visible;">
+                    <defs>
+                      <marker
+                        id='head'
+                        orient="auto"
+                        markerWidth='3'
+                        markerHeight='4'
+                        refX='0.1'
+                        refY='2'
+                      >
+                        <path d='M0,0 V4 L2,2 Z' fill="currentColor" />
+                      </marker>
+                    </defs>
+                    <line x1="0" y1="0%" x2="100%" y2="0%" stroke="currentColor" stroke-width='4'
+                      fill='none' marker-end='url(#head)' />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <div x-data="Product(step.product, 'w-10')"></div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+</body>
+</html>
