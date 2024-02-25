@@ -1,0 +1,15 @@
+[x-cloak] { display: none!important; }
+[un-cloak] { display: none!important; }
+
+.pipe {
+  gap: 0;
+  li {
+    & > *:hover {
+      text-decoration: underline;
+    }
+    &:not(:last-child):after {
+      content: '|';
+      padding-inline: .25rem;
+    }
+  }
+}

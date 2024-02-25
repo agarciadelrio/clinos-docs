@@ -1,0 +1,438 @@
+{
+  "cases": [
+    {"name": "Agente crea/edita paciente",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Agente crea/edita cita",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Agente revisa agenda",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Revisa",
+          "product": "calendar-days:Agenda"
+        }
+      ]
+    },
+    {"name": "Agente atiende avisos",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Atiende",
+          "product": "bell-alert:Avisos:red-500"
+        }
+      ]
+    },
+    {"name": "Agente crea/edita factura",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "document-text:Factura"
+        }
+      ]
+    },
+    {"name": "Agente importa datos",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Importa",
+          "product": "circle-stack:Datos"
+        }
+      ]
+    },
+    {"name": "Agente exporta datos",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Exporta",
+          "product": "table-cells:Datos"
+        }
+      ]
+    },
+    {"name": "Agente genera documento",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Genera",
+          "product": "document:Documento"
+        }
+      ]
+    },
+    {"name": "Agente recepciona paciente",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Recepciona",
+          "product": "person:Paciente:orange-500"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Abre (establece hora de llegada)",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Especialista revisa agenda",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Revisa",
+          "product": "calendar-days:Agenda"
+        }
+      ]
+    },
+    {"name": "Especialista atiende avisos",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Atiende",
+          "product": "bell-alert:Avisos:red-500"
+        }
+      ]
+    },
+    {"name": "Especialista revisa historia",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Revisa historia",
+          "product": "magnifying-glass-circle:Historia:orange-500"
+        }
+      ]
+    },
+    {"name": "Especialista abre cita",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Abre cita (establece hora de consulta)",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Especialista crea episodio",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Crea episodio",
+          "product": "pencil-square:Episodio:orange-500"
+        }
+      ]
+    },
+    {"name": "Especialista crea documento",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Crea",
+          "product": "document:Documento"
+        },
+        {
+          "action": "Entrega",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Especialista cierra cita",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Cierra (establece hora de salida)",
+          "product": "check-circle:Cita"
+        }
+      ]
+    },
+    {"name": "Especialista solicita siguiente consulta",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Solicita siguiente consulta",
+          "product": "support:Agente:blue-500"
+        },
+        {
+          "action": "Crea",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Especialista solicita interconsulta",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Solicita interconsulta",
+          "product": "support:Agente:blue-500"
+        },
+        {
+          "action": "Crea",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Especialista cancela / modifica cita",
+      "actor": "doctor:Especialista:green-500",
+      "steps": [
+        {
+          "action": "Cancela / Modifica",
+          "product": "calendar-days:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Cancela / Modifica",
+          "product": "calendar-days:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Notifica",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Paciente solicita cita",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Solicita",
+          "product": "calendar:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Crea",
+          "product": "calendar-days:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Notifica",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Paciente modifica cita",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Modifica",
+          "product": "calendar-days:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Modifica",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Paciente cancela cita",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Cancela",
+          "product": "calendar-days:Cita"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Cancela",
+          "product": "trash:Cita"
+        }
+      ]
+    },
+    {"name": "Agente solicita pago",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Solicita",
+          "product": "credit-card:Pago"
+        },
+        {
+          "actor": "person:Paciente:orange-500",
+          "action": "Realiza",
+          "product": "currency-euro:Pago"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Cierra",
+          "product": "check-circle:Cita"
+        }
+      ]
+    },
+    {"name": "Paciente solicita factura",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Solicita",
+          "product": "document-text:Factura"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Crea / Busca",
+          "product": "document-text:Factura"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Entrega",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Paciente solicita documento",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Solicita",
+          "product": "document:Documento"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Crea / Busca",
+          "product": "document:Documento"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Entrega",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Paciente solicita abono",
+      "actor": "person:Paciente:orange-500",
+      "steps": [
+        {
+          "action": "Solicita",
+          "product": "receipt-refund:Abono"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Realiza",
+          "product": "currency-euro:Abono"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Modifica",
+          "product": "calendar-days:Cita"
+        }
+      ]
+    },
+    {"name": "Agente cierra caja",
+      "actor": "support:Agente:blue-500",
+      "steps": [
+        {
+          "action": "Cierra",
+          "product": "calculator:Caja"
+        },
+        {
+          "actor": "support:Agente:blue-500",
+          "action": "Genera",
+          "product": "document:Resumen"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Agente",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "support:Agente:blue-500"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Especialista",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "doctor:Especialista:green-500"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Cuenta",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "briefcase:Cuenta"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Aseguradora",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "building-office:Aseguradora"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Producto",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "archive-box:Producto"
+        }
+      ]
+    },
+    {"name": "Gerente crea/edita Precios",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "CRUD",
+          "product": "currency-euro:Precios"
+        }
+      ]
+    },
+    {"name": "Gerente atiende avisos",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "Atiende",
+          "product": "bell-alert:Avisos:red-500"
+        }
+      ]
+    },
+    {"name": "Gerente visualiza Estadísticas",
+      "actor": "home-solid:Gerente:purple-500",
+      "steps": [
+        {
+          "action": "Visualiza",
+          "product": "presentation-chart-bar:Estadísticas:red"
+        }
+      ]
+    },
+    {"name": "Servidor envía SMS",
+      "actor": "robot:Servidor:cyan-500",
+      "steps": [
+        {
+          "action": "Envía SMS",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Servidor envía eMail",
+      "actor": "robot:Servidor:cyan-500",
+      "steps": [
+        {
+          "action": "Envía eMail",
+          "product": "person:Paciente:orange-500"
+        }
+      ]
+    },
+    {"name": "Servidor genera avisos",
+      "actor": "robot:Servidor:cyan-500",
+      "steps": [
+        {
+          "action": "Genera",
+          "product": "bell-alert:Avisos:red-500"
+        }
+      ]
+    }
+  ]
+}
