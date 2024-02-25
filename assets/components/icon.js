@@ -1,4 +1,7 @@
-import iconsset from '../icons/icons.json' assert { type: 'json' };
+//import iconsset from '../icons/icons.json' assert { type: 'json' };
+const iconsset = await((await fetch('/assets/icons/icons.json')).json())
+console.log('iconsset', iconsset)
+
 
 export default (icon) => ({
     icon,

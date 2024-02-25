@@ -3,7 +3,11 @@ import persist from './alpine.persist.esm.js'
 import Icon from './components/icon.js'
 import Actor from './components/actor.js'
 import Product from './components/product.js'
-import UseCases from './use-cases.json' assert { type: 'json' };
+//import UseCases from './use-cases.json' assert { type: 'json' };
+const UseCases = await((await fetch('/assets/use-cases.json')).json())
+
+console.log('UseCases', UseCases)
+
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
